@@ -1,13 +1,13 @@
-import { useState, MouseEventHandler } from "react"
+import { useState } from "react"
 import { Button } from "./Button"
 import '../styles/OptionTask.css'
 import { OpenTaskSVG, CloseTaskSVG } from "./SvgTaskOptions"
 import { optionTask, jsonTask } from "../interfaces/interfaces"
 
-export const OptionTask = ({ setAmountTasks, id, statesValues, states }: optionTask) => {
+export const OptionTask = ({ id, statesValues, states }: optionTask) => {
     let { effectChanger } = statesValues;
     let { setEffectChanger, setShowTaskInfo, setCreateTask,
-        setTaskName, setTaskDesc, setIsModifying, setTaskDescID } = states;
+        setTaskName, setTaskDesc, setIsModifying, setTaskDescID, setAmountOfTasks } = states;
 
     let [showOption, setShowOption] = useState(false);
     let [isCompleted, setIsCompleted] = useState(false);
@@ -16,15 +16,14 @@ export const OptionTask = ({ setAmountTasks, id, statesValues, states }: optionT
         ? <CloseTaskSVG closeFunction={() => setShowOption(false)} />
         : <OpenTaskSVG openFunction={() => setShowOption(true)} />
 
-    const deleteTask: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    const deleteTask = () => {
         let storage = localStorage;
-        let target = ev.target as HTMLButtonElement;
 
-        let id = target.offsetParent?.parentElement?.id;
-
-        if (id) storage.removeItem(id)
-        setAmountTasks(storage.length);
-        setShowOption(false)
+        if (id) {
+            storage.removeItem(id);
+            setAmountOfTasks(storage.length);
+            setShowOption(false)
+        }
     }
 
     const completeTask = () => {
@@ -74,7 +73,7 @@ export const OptionTask = ({ setAmountTasks, id, statesValues, states }: optionT
         }
     }
 
-    let text = isCompleted ? 'Unmark completed task' : 'Mark as complete';
+    let completeText = isCompleted ? 'Unmark completed task' : 'Mark as complete';
 
     return (
         <>
@@ -86,8 +85,8 @@ export const OptionTask = ({ setAmountTasks, id, statesValues, states }: optionT
                     <CloseTaskSVG closeFunction={() => setShowOption(false)} />
                     <article>
                         <section>
-                            <Button text={text} buttonEvent={() => completeTask()} />
-                            <Button text="Delete task" buttonEvent={(ev) => deleteTask(ev)} />
+                            <Button text={completeText} buttonEvent={() => completeTask()} />
+                            <Button text="Delete task" buttonEvent={() => deleteTask()} />
                             <Button text="Modify task" buttonEvent={() => modifyTask()} />
                         </section>
                     </article>

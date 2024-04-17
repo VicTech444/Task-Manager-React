@@ -84,7 +84,6 @@ export interface jsonTask {
 }
 
 export interface optionTask {
-    setAmountTasks: React.Dispatch<React.SetStateAction<number>>;
     id: string;
     statesValues: allStatesValues;
     states: allStates

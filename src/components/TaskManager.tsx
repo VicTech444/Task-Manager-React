@@ -281,10 +281,10 @@ export const TaskManager = () => {
                                     onClick={(ev) => showTask(ev)}>
                                     {item.name}
 
-                                    <OptionTask setAmountTasks={setAmountOfTasks}
-                                        id={item.id}
-                                        statesValues={statesValues}
-                                        states={states}/>
+                                    <OptionTask
+                                    id={item.id}
+                                    statesValues={statesValues}
+                                    states={states}/>
                                 </div>
                             )
                         } else if (filter.every(element => element === undefined)) {
