@@ -1,0 +1,50 @@
+button {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 9px;
+    color: #fff;
+    background-color: #5d5d5d;
+    transition: background-color 0.15s linear;
+    outline: none;
+}
+
+
+.save {
+    background-color: #5dcb6a;
+    color: #000000;
+
+    &:hover{
+        background-color: #278b33;
+    }
+
+    &:active{
+        background-color: #23722d;
+    }
+}
+
+.cancel {
+    background-color: #de5555;
+    color: #fff;
+
+    &:hover{
+        background-color: #ca3838;
+    }
+
+    &:active{
+        background-color: #aa2b2b;
+    }
+}
+
+.modify {
+    background-color: #bb7454;
+    color: #fff;
+
+    &:hover{
+        background-color: #a55d45;
+    }
+
+    &:active{
+        background-color: #904e3e;
+    }
+}

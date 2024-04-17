@@ -1,0 +1,44 @@
+.task-description {
+    display: flex;
+    row-gap: 15px;
+    flex-direction: column;
+    padding: 14px 10px 10px;
+    background-color: #d1d1d1;
+    color: #302222;
+    border-top: 3px solid #7b5d53;
+    box-shadow: 0 0 10px 0 #000;
+    border-radius: 10px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    font-size: 22px; 
+}
+
+.separation-line {
+    width: 100%;
+    height: 1px;
+    background-color: #302222;
+}
+
+section {
+    font-size: 18px;
+}
+
+.create-options {
+    display: flex;
+    column-gap: 15px;
+}
+
+.description, .title {
+    width: 100%;
+    resize: none;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+.title {
+    font-size: 22px;
+}
