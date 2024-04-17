@@ -93,8 +93,7 @@ export const TaskManager = () => {
     }
 
     const placeholderAddTask: MouseEventHandler<HTMLButtonElement> = (option) => {
-        changePlaceholderMsg(option);
-        
+        changePlaceholderMsg(option);     
         setFiltering(false);
         setSearchFilter("");
 
@@ -106,6 +105,7 @@ export const TaskManager = () => {
             code: 2
         })
     }
+
     const changePlaceholderMsg: MouseEventHandler<HTMLButtonElement> = (option) => {
         let target = (option.target as HTMLButtonElement);
 
@@ -160,8 +160,6 @@ export const TaskManager = () => {
         }
     }
 
-
-
     const addTaskChanges: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
         let target = event.target.value;
         setTaskName(target);
@@ -183,13 +181,13 @@ export const TaskManager = () => {
 
             newTaskListNames.push(json.name);
             setTaskListNames(newTaskListNames)
-
         })
 
     }, [effectChanger])
 
-    let taskNameDisabled = taskName && showTaskInfo && createTaskOptions ? true : false;
-
+    let taskNameDisabled = taskName && showTaskInfo && createTaskOptions 
+    ? true 
+    : false;
 
     const showTask: MouseEventHandler<HTMLDivElement> = (ev) => {
         let target = (ev.target as HTMLElement);
@@ -199,9 +197,7 @@ export const TaskManager = () => {
         if (id !== taskDescID) {
             let taskWithInfo = storage.getItem(id);
             if (taskWithInfo) {
-
                 let taskJSON: jsonTask = JSON.parse(taskWithInfo);
-
 
                 setShowTaskInfo(true);
                 setCreateTask(false);
@@ -212,19 +208,16 @@ export const TaskManager = () => {
             }
 
         } else {
-
             setShowTaskInfo(false);
             setTaskDescID("undefined")
         }
     }
-
 
     const handleFilter: ChangeEventHandler<HTMLInputElement> = (ev) => {
         setTaskName(ev.target.value);
 
         let newSearchFilter = ev.target.value;
         setSearchFilter(newSearchFilter);
-
     }
 
     let handleInput = filtering 
@@ -263,7 +256,6 @@ export const TaskManager = () => {
                     disabled={taskNameDisabled}
                     onChange={handleInput}
                     value={taskName}
-
                 />
                 <div className={`task-list `}>
                     {filter.map((element, index) => {
