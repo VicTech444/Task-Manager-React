@@ -46,27 +46,39 @@ export interface storageProps {
 export interface allStates {
     setPlaceholder: React.Dispatch<React.SetStateAction<string>>;
     setTaskName: React.Dispatch<React.SetStateAction<string>>;
-    setTaskDesc: React.Dispatch<React.SetStateAction<string>>
+    setTaskTitle: React.Dispatch<React.SetStateAction<string>>;
     setValidTaskName: React.Dispatch<React.SetStateAction<boolean>>;
-    setFirstClick: React.Dispatch<React.SetStateAction<firstClickTime>>;
+    setFirstButtonClick: React.Dispatch<React.SetStateAction<firstClickTime>>;
     setRecentlyOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setCreateTask: React.Dispatch<React.SetStateAction<boolean>>;
     setShowTaskInfo: React.Dispatch<React.SetStateAction<boolean>>;
+    setTaskDesc: React.Dispatch<React.SetStateAction<string>>;
+    setTaskDescID: React.Dispatch<React.SetStateAction<string>>;
+    setTaskList: React.Dispatch<React.SetStateAction<string[]>>;
+    setTaskListNames: React.Dispatch<React.SetStateAction<string[]>>;
+    setAmountOfTasks: React.Dispatch<React.SetStateAction<number>>;
+    setFiltering: React.Dispatch<React.SetStateAction<boolean>>;
+    setSearchFilter: React.Dispatch<React.SetStateAction<string>>;
     setEffectChanger: React.Dispatch<React.SetStateAction<boolean>>;
     setIsModifying: React.Dispatch<React.SetStateAction<boolean>>;
-    setTaskDescID: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface allStatesValues {
     currentHolder: string;
     taskName: string;
+    taskTitle: string;
+    validTaskName: boolean;
+    firstButtonClick: string;
+    recentlyOpen: boolean;
+    createTaskOptions: boolean;
+    showTaskInfo: boolean;
     taskDesc: string;
-    validTaskName: boolean
-    firstClick: firstClickTime
-    recentlyOpen: boolean
-    createTaskOptions: boolean
-    showTaskInfo: boolean
     taskDescID: string;
+    taskList: string[];
+    taskListNames: string[];
+    amountOfTasks: number;
+    filtering: boolean;
+    searchFilter: string;
     effectChanger: boolean;
     isModifying: boolean;
 }
@@ -87,6 +99,6 @@ export interface optionTask {
 
 export interface completeOption {
     isCompleted: boolean,
-    divToModify:  HTMLElement | null
+    divToModify: HTMLElement | null
 }
 

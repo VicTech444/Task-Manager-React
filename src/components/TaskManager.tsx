@@ -24,7 +24,7 @@ export const TaskManager = () => {
     let [taskName, setTaskName] = useState('');
     let [taskTitle, setTaskTitle] = useState('')
     let [validTaskName, setValidTaskName] = useState(false);
-    let [firstClick, setFirstClick] = useState(firstClickTime);
+    let [firstButtonClick, setFirstButtonClick] = useState(firstClickTime);
     let [recentlyOpen, setRecentlyOpen] = useState(true)
     let [createTaskOptions, setCreateTask] = useState(false);
     let [showTaskInfo, setShowTaskInfo] = useState(false);
@@ -33,7 +33,7 @@ export const TaskManager = () => {
     let [taskDescID, setTaskDescID] = useState("undefined")
     let [taskList, setTaskList] = useState<string[]>([]);
     let [taskListNames, setTaskListNames] = useState<string[]>([])
-    let [amountOfTaks, setAmountOfTasks] = useState(storage.length);
+    let [amountOfTasks, setAmountOfTasks] = useState(storage.length);
 
     let [filtering, setFiltering] = useState(true)
     let [searchFilter, setSearchFilter] = useState('');
@@ -43,27 +43,40 @@ export const TaskManager = () => {
     let states = {
         setPlaceholder: setPlaceholder,
         setTaskName: setTaskName,
-        setTaskDesc: setTaskDesc,
+        setTaskTitle: setTaskTitle,
         setValidTaskName: setValidTaskName,
-        setFirstClick: setFirstClick,
+        setFirstButtonClick: setFirstButtonClick,
         setRecentlyOpen: setRecentlyOpen,
         setCreateTask: setCreateTask,
         setShowTaskInfo: setShowTaskInfo,
+        setTaskDesc: setTaskDesc,
+        setTaskDescID: setTaskDescID,
+        setTaskList: setTaskList,
+        setTaskListNames: setTaskListNames,
+        setAmountOfTasks: setAmountOfTasks,
+        setFiltering: setFiltering,
+        setSearchFilter: setSearchFilter,
         setEffectChanger: setEffectChanger,
         setIsModifying: setIsModifying,
-        setTaskDescID: setTaskDescID
+       
     }
 
     let statesValues = {
         currentHolder: currentHolder,
         taskName: taskName,
-        taskDesc: taskDesc,
+        taskTitle: taskTitle,
         validTaskName: validTaskName,
-        firstClick: firstClick,
+        firstButtonClick: firstButtonClick,
         recentlyOpen: recentlyOpen,
         createTaskOptions: createTaskOptions,
         showTaskInfo: showTaskInfo,
+        taskDesc: taskDesc,
         taskDescID: taskDescID,
+        taskList: taskList,
+        taskListNames: taskListNames,
+        amountOfTasks: amountOfTasks,
+        filtering: filtering,
+        searchFilter: searchFilter,
         effectChanger: effectChanger,
         isModifying: isModifying
     }
@@ -74,7 +87,7 @@ export const TaskManager = () => {
         setCreateTask(false);
         setShowTaskInfo(false);
 
-        let { filter, newTask } = firstClick;
+        let { filter, newTask } = firstButtonClick;
         errorMessage({
             filterValue: filter,
             newTaskValue: newTask,
@@ -88,7 +101,7 @@ export const TaskManager = () => {
         setFiltering(false);
         setSearchFilter("");
 
-        let { filter, newTask } = firstClick;
+        let { filter, newTask } = firstButtonClick;
 
         errorMessage({
             filterValue: filter,
@@ -121,12 +134,12 @@ export const TaskManager = () => {
 
         if (code === 1) {
             if (filterValue) {
-                let newFirstClick = {
+                let newfirstButtonClick = {
                     filter: false,
                     newTask: true
                 }
                 setTaskName("")
-                setFirstClick(newFirstClick)
+                setFirstButtonClick(newfirstButtonClick)
                 return
             }
 
@@ -134,12 +147,12 @@ export const TaskManager = () => {
 
         } else if (code === 2) {
             if (newTaskValue) {
-                let newFirstClick = {
+                let newfirstButtonClick = {
                     filter: true,
                     newTask: false
                 }
                 setTaskName("")
-                setFirstClick(newFirstClick)
+                setFirstButtonClick(newfirstButtonClick)
                 return
             }
 
@@ -181,7 +194,7 @@ export const TaskManager = () => {
 
         })
 
-    }, [amountOfTaks, effectChanger])
+    }, [amountOfTasks, effectChanger])
 
     let taskNameDisabled = taskName && showTaskInfo && createTaskOptions ? true : false;
 
@@ -304,7 +317,7 @@ export const TaskManager = () => {
                     states={states}
                     statesValues={statesValues}
                     setAmountTask={setAmountOfTasks}
-                    amountTask={amountOfTaks} />
+                    amountTask={amountOfTasks} />
             }
         </>
     )
