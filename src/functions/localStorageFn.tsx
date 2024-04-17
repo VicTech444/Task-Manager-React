@@ -56,7 +56,7 @@ export const cancelTask = ({ states }: newTaskProps) => {
 }
 
 export const modifyTask = (propsStorage: storageProps) => {
-    let { statesValues, setAmountTask, states } = propsStorage;
+    let { statesValues, states } = propsStorage;
     let { taskDesc, taskDescID, taskName, effectChanger } = statesValues
     let { setIsModifying, setShowTaskInfo, setCreateTask, setTaskName, setEffectChanger } = states;
 

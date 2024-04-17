@@ -165,19 +165,14 @@ export const TaskManager = () => {
 
 
 
-    const inputChanges: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
+    const addTaskChanges: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (event) => {
         let target = event.target.value;
         setTaskName(target);
 
         if (!target) {
             setShowTaskInfo(false);
-            setCreateTask(false)
+            setCreateTask(false);
         }
-    }
-
-    const saveTaskDesc: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-        let description = event.target.value;
-        setTaskDesc(description);
     }
 
     useEffect(() => {
@@ -235,7 +230,9 @@ export const TaskManager = () => {
 
     }
 
-    let handleInput = filtering ? (ev: ChangeEvent<HTMLInputElement>) => handleFilter(ev) : (ev: ChangeEvent<HTMLInputElement>) => inputChanges(ev);
+    let handleInput = filtering 
+    ? (ev: ChangeEvent<HTMLInputElement>) => handleFilter(ev) 
+    : (ev: ChangeEvent<HTMLInputElement>) => addTaskChanges(ev);
 
     let filter = !searchFilter
         ? taskList
@@ -244,10 +241,7 @@ export const TaskManager = () => {
             let nameLowerCase = json.name.toLocaleLowerCase();
             let filterLowerCase = searchFilter.toLocaleLowerCase();
 
-            if (nameLowerCase.includes(filterLowerCase)){
-                return element
-            }
-
+            if (nameLowerCase.includes(filterLowerCase)) return element
         })
         
     return (
@@ -308,16 +302,9 @@ export const TaskManager = () => {
             {
                 showTaskInfo &&
                 <Task
-                    title={taskName}
-                    taskTitle={taskTitle}
-                    description={taskDesc}
-                    create={createTaskOptions}
-                    setName={(ev: ChangeEvent<HTMLTextAreaElement>) => inputChanges(ev)}
-                    setTaskDesc={(ev: ChangeEvent<HTMLTextAreaElement>) => saveTaskDesc(ev)}
+                    setName={(ev: ChangeEvent<HTMLTextAreaElement>) => addTaskChanges(ev)}
                     states={states}
-                    statesValues={statesValues}
-                    setAmountTask={setAmountOfTasks}
-                    amountTask={amountOfTasks} />
+                    statesValues={statesValues}/>
             }
         </>
     )

@@ -5,32 +5,30 @@ import { saveInStorage, cancelTask, modifyTask } from "../functions/localStorage
 
 
 export const Task = (props: taskProps) => {
-    let { title, taskTitle , description,
-        create, setName,
-        setTaskDesc, states, statesValues, setAmountTask } = props;
+    let {setName, states, statesValues} = props;
+
+    let {taskName, taskTitle, taskDesc, createTaskOptions, taskDescID, isModifying} = statesValues;
+    let {setAmountOfTasks, setTaskDesc} = states
 
     let storageParam = {
         statesValues: statesValues,
-        setAmountTask: setAmountTask,
+        setAmountTask: setAmountOfTasks,
         states: states
     }
 
-    let showTaskCreateDesc = create ? false : true;
-    let showTaskCreateTitle = create ? false : true;
-    let showTitle = !create ? true : false;
+    let showTaskCreateDesc = createTaskOptions ? false : true;
+    let showTaskCreateTitle = createTaskOptions ? false : true;
+    let showTitle = createTaskOptions ? false : true;
     
-    let modifying = statesValues.isModifying 
+    let modifying = isModifying
     ? <Button option="modify" text="Modify task" buttonEvent={() => modifyTask(storageParam)} />
     : <Button option="save" text="Save task" buttonEvent={() => saveInStorage(storageParam)} />
-
-    console.log(statesValues.isModifying);
-
     return (
-        <div className="task-description" id={statesValues.taskDescID}>
+        <div className="task-description" id={taskDescID}>
             <header>
                 {
                     !showTaskCreateTitle &&
-                    <textarea className="title" rows={1} value={title} onChange={(ev) => setName(ev)}></textarea>
+                    <textarea className="title" rows={1} value={taskName} onChange={(ev) => setName(ev)}></textarea>
                 }
                 {
                     showTitle && <h3>{taskTitle}</h3>
@@ -38,17 +36,17 @@ export const Task = (props: taskProps) => {
                 <div className="separation-line"></div>
             </header>
             <section>
-                {showTaskCreateDesc && description}
+                {showTaskCreateDesc && taskDesc}
             </section>
-            {create &&
+            {createTaskOptions &&
                 <>
                     <div className="create-description">
                         <textarea required
                             placeholder="Enter your task description"
                             className="description"
                             rows={5}
-                            value={description}
-                            onChange={(ev) => setTaskDesc(ev)}>
+                            value={taskDesc}
+                            onChange={(ev) => setTaskDesc(ev.target.value)}>
 
                         </textarea>
                     </div>

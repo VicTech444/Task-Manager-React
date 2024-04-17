@@ -10,16 +10,9 @@ interface firstClickTime {
 }
 
 export interface taskProps {
-    title: string;
-    taskTitle: string;
-    description: string;
-    create?: boolean;
     setName: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-    setTaskDesc: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     states: allStates;
     statesValues: allStatesValues;
-    amountTask: number;
-    setAmountTask: React.Dispatch<React.SetStateAction<number>>
 }
 
 export interface errorMessage {
@@ -68,7 +61,7 @@ export interface allStatesValues {
     taskName: string;
     taskTitle: string;
     validTaskName: boolean;
-    firstButtonClick: string;
+    firstButtonClick: firstClickTime;
     recentlyOpen: boolean;
     createTaskOptions: boolean;
     showTaskInfo: boolean;
