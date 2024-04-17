@@ -2,10 +2,10 @@
 import { newTaskProps, storageProps, jsonTask } from "../interfaces/interfaces"
 
 export const saveInStorage = (propsStorage: storageProps) => {
-    let { statesValues, setAmountTask, states } = propsStorage;
+    let { statesValues, states } = propsStorage;
 
-    let { setTaskName, setCreateTask, setShowTaskInfo } = states;
-    let { taskName, taskDesc } = statesValues;
+    let { setTaskName, setCreateTask, setShowTaskInfo, setEffectChanger } = states;
+    let { taskName, taskDesc , effectChanger} = statesValues;
 
     let storage = localStorage;
     let arrStorage: string[] = Object.values(storage);
@@ -38,7 +38,7 @@ export const saveInStorage = (propsStorage: storageProps) => {
             && !noDuplicateID.has(newItem.id)) {
 
             storage.setItem(newItem.id, JSON.stringify(newItem));
-            setAmountTask(storage.length + 1);
+            setEffectChanger(!effectChanger)
 
             setCreateTask(false);
             setShowTaskInfo(false);

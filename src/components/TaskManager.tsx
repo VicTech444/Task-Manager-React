@@ -33,11 +33,10 @@ export const TaskManager = () => {
     let [taskDescID, setTaskDescID] = useState("undefined")
     let [taskList, setTaskList] = useState<string[]>([]);
     let [taskListNames, setTaskListNames] = useState<string[]>([])
-    let [amountOfTasks, setAmountOfTasks] = useState(storage.length);
 
     let [filtering, setFiltering] = useState(true)
     let [searchFilter, setSearchFilter] = useState('');
-    let [effectChanger, setEffectChanger] = useState(false)
+    let [effectChanger, setEffectChanger] = useState(false);
     let [isModifying, setIsModifying] = useState(false);
 
     let states = {
@@ -53,7 +52,6 @@ export const TaskManager = () => {
         setTaskDescID: setTaskDescID,
         setTaskList: setTaskList,
         setTaskListNames: setTaskListNames,
-        setAmountOfTasks: setAmountOfTasks,
         setFiltering: setFiltering,
         setSearchFilter: setSearchFilter,
         setEffectChanger: setEffectChanger,
@@ -74,7 +72,6 @@ export const TaskManager = () => {
         taskDescID: taskDescID,
         taskList: taskList,
         taskListNames: taskListNames,
-        amountOfTasks: amountOfTasks,
         filtering: filtering,
         searchFilter: searchFilter,
         effectChanger: effectChanger,
@@ -189,7 +186,7 @@ export const TaskManager = () => {
 
         })
 
-    }, [amountOfTasks, effectChanger])
+    }, [effectChanger])
 
     let taskNameDisabled = taskName && showTaskInfo && createTaskOptions ? true : false;
 

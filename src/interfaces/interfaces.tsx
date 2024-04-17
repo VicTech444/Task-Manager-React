@@ -32,7 +32,6 @@ export interface newTaskProps {
 
 export interface storageProps {
     statesValues: allStatesValues
-    setAmountTask: React.Dispatch<React.SetStateAction<number>>
     states: allStates
 }
 
@@ -49,7 +48,6 @@ export interface allStates {
     setTaskDescID: React.Dispatch<React.SetStateAction<string>>;
     setTaskList: React.Dispatch<React.SetStateAction<string[]>>;
     setTaskListNames: React.Dispatch<React.SetStateAction<string[]>>;
-    setAmountOfTasks: React.Dispatch<React.SetStateAction<number>>;
     setFiltering: React.Dispatch<React.SetStateAction<boolean>>;
     setSearchFilter: React.Dispatch<React.SetStateAction<string>>;
     setEffectChanger: React.Dispatch<React.SetStateAction<boolean>>;
@@ -69,7 +67,6 @@ export interface allStatesValues {
     taskDescID: string;
     taskList: string[];
     taskListNames: string[];
-    amountOfTasks: number;
     filtering: boolean;
     searchFilter: string;
     effectChanger: boolean;

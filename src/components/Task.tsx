@@ -8,11 +8,10 @@ export const Task = (props: taskProps) => {
     let {setName, states, statesValues} = props;
 
     let {taskName, taskTitle, taskDesc, createTaskOptions, taskDescID, isModifying} = statesValues;
-    let {setAmountOfTasks, setTaskDesc} = states
+    let {setTaskDesc} = states
 
     let storageParam = {
         statesValues: statesValues,
-        setAmountTask: setAmountOfTasks,
         states: states
     }
 

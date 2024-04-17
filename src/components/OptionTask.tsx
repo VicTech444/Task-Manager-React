@@ -7,7 +7,7 @@ import { optionTask, jsonTask } from "../interfaces/interfaces"
 export const OptionTask = ({ id, statesValues, states }: optionTask) => {
     let { effectChanger } = statesValues;
     let { setEffectChanger, setShowTaskInfo, setCreateTask,
-        setTaskName, setTaskDesc, setIsModifying, setTaskDescID, setAmountOfTasks } = states;
+        setTaskName, setTaskDesc, setIsModifying, setTaskDescID } = states;
 
     let [showOption, setShowOption] = useState(false);
     let [isCompleted, setIsCompleted] = useState(false);
@@ -21,7 +21,7 @@ export const OptionTask = ({ id, statesValues, states }: optionTask) => {
 
         if (id) {
             storage.removeItem(id);
-            setAmountOfTasks(storage.length);
+            setEffectChanger(!effectChanger)
             setShowOption(false)
         }
     }
