@@ -81,10 +81,10 @@ export const OptionTask = ({ id, statesValues, states }: optionTask) => {
 
             {
                 showOption &&
-                <div className="option-tasks" key={id}>
+                <div key={id} className="option-tasks">
                     <CloseTaskSVG closeFunction={() => setShowOption(false)} />
                     <article>
-                        <section>
+                        <section >
                             <Button text={completeText} buttonEvent={() => completeTask()} />
                             <Button text="Delete task" buttonEvent={() => deleteTask()} />
                             <Button text="Modify task" buttonEvent={() => modifyTask()} />
